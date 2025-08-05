@@ -48,7 +48,7 @@ if __name__ == "__main__":
     if all_results:
         full_df = pd.concat(all_results, ignore_index=True)
         full_df.to_csv("phase3_vs_all_results.csv", index=False)
-        print("✅ Saved tournament results to phase3_vs_all_results.csv")
+        print("Saved tournament results to phase3_vs_all_results.csv")
 
         avg_wealth = (full_df[full_df.agent == "RLAgent1"]
                       .groupby(["rl_variant", "opponent"])["total_wealth"].mean()
@@ -61,7 +61,7 @@ if __name__ == "__main__":
         plt.tight_layout()
         plt.legend(title="RL Trust Variant")
         plt.savefig("rl_all_trust_barplot.png")
-        print("📊 Saved bar plot to rl_all_trust_barplot.png")
+        print("Saved bar plot to rl_all_trust_barplot.png")
 
         action_means = (full_df[full_df.agent == "RLAgent1"]
                         .groupby(["rl_variant", "opponent"])[["num_cooperate", "num_defect", "num_abstain"]]
@@ -73,6 +73,6 @@ if __name__ == "__main__":
             plt.title(f"{action.replace('num_', '').capitalize()} Heatmap: RL Variants vs Opponents")
             plt.tight_layout()
             plt.savefig(f"rl_all_trust_{action}_heatmap.png")
-            print(f"🔥 Saved heatmap to rl_all_trust_{action}_heatmap.png")
+            print(f"Saved heatmap to rl_all_trust_{action}_heatmap.png")
     else:
-        print("⚠️ No data generated from simulations.")
+        print("⚠No data generated from simulations.")
